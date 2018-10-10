@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="C:\Users\Perry\.Rider2018.2\system\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\Perry\.Rider2018.2\system\resharper-host\Local\Transient\ReSharperHost\v182\SolutionCaches\_Physics and Particles.-1890004472.00" t="ExcludeRecursive" />
+    <e p="D:\School\ScriptingForAnimation\1610Fall1028\Physics and Particles" t="IncludeRecursive">
+      <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
+      <e p="Assets" t="Include">
+        <e p="AddMoney.cs" t="Include" />
+        <e p="Animal.cs" t="Include" />
+        <e p="Calculator.cs" t="Include" />
+        <e p="CharacterMover.cs" t="Include" />
+        <e p="DestroyObject.cs" t="Include" />
+        <e p="Dog.cs" t="Include" />
+        <e p="FloatData.cs" t="Include" />
+        <e p="IfStatements.cs" t="Include" />
+        <e p="Instancing.cs" t="Include" />
+        <e p="MouseDownBehavior.cs" t="Include" />
+        <e p="Move.cs" t="Include" />
+        <e p="MyFirstScript.cs" t="Include" />
+        <e p="NameID.cs" t="Include" />
+        <e p="PowerUp.cs" t="Include" />
+        <e p="TriggerEventBehavior.cs" t="Include" />
+        <e p="Variables.cs" t="Include" />
+      </e>
+      <e p="Library" t="ExcludeRecursive" />
+      <e p="obj" t="ExcludeRecursive" />
+      <e p="packages" t="ExcludeRecursive" />
+      <e p="Physics and Particles.sln" t="IncludeFlat" />
+      <e p="Temp" t="ExcludeRecursive">
+        <e p="bin" t="ExcludeRecursive" />
+      </e>
+    </e>
+  </component>
+</project>
