@@ -25,6 +25,8 @@ public class CharacterMover : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
+		
+		
 		if (controller.isGrounded)
 		{
 			position.Set(0, 0, MoveSpeed*Input.GetAxis("Vertical"));
@@ -37,6 +39,8 @@ public class CharacterMover : MonoBehaviour
 				position.y = JumpSpeed;
 			}
 		}
+		
+
 		
 		position.y -= Gravity*Time.deltaTime;
 		controller.Move(position*Time.deltaTime);

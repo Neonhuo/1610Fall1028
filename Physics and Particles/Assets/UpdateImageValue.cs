@@ -11,10 +11,18 @@ public class UpdateImageValue : MonoBehaviour
 	void Start ()
 	{
 		image = GetComponent<Image>();
+		
+		
 	}
+	
 	
 	void Update ()
 	{
 		image.fillAmount = Data.Value;
+
+		if (image.fillAmount <= 0.5f)
+		{
+			image.color = Color.red;
+		}
 	}
 }
