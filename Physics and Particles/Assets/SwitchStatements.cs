@@ -31,7 +31,6 @@ public class SwitchStatements : MonoBehaviour
 				case GameStates.States.Dying:
 					print("You are dead");
 					break;
-				
 				case GameStates.States.Ending:
 					print("We are ending the Game");
 					break;
