@@ -68,5 +68,13 @@ public class PlayerController : MonoBehaviour
 		Scaler.x *= -1;
 		transform.localScale = Scaler;
 	}
+	
+	private void OnCollisionEnter2D(Collision2D other)
+	{
+		if (other.gameObject.tag == "Coin")
+		{
+			Destroy(other.gameObject);
+		}
+	}
 
 }

@@ -9,6 +9,7 @@
         <e p="AddMoney.cs" t="Include" />
         <e p="AddToCollection.cs" t="Include" />
         <e p="Animal.cs" t="Include" />
+        <e p="BasicAI.cs" t="Include" />
         <e p="ChangeValue.cs" t="Include" />
         <e p="CharacterMover.cs" t="Include" />
         <e p="DestroyObject.cs" t="Include" />
