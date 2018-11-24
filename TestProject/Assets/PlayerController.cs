@@ -4,12 +4,17 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-
-	public float speed;
+	
+	private float currentSpeed;
+	public float baseSpeed;
+	public float crouchSpeed;
+	
 	public float jumpForce;
 	private float moveInput;
 
 	private Rigidbody2D rb;
+	
+
 
 	private bool facingRight = true;
 
@@ -17,12 +22,17 @@ public class PlayerController : MonoBehaviour
 	public Transform groundCheck;
 	public float checkRadius;
 	public LayerMask whatIsGround;
+	
+	private bool isCrouching = false;
+	public Transform ceilingCheck;
 
 	private int extraJumps;
 	public int extraJumpsValue;
 	
 	void Start ()
 	{
+		extraJumps = extraJumpsValue;
+		currentSpeed = baseSpeed;
 		rb = GetComponent<Rigidbody2D>();
 	}
 	
@@ -30,9 +40,10 @@ public class PlayerController : MonoBehaviour
 	{
 
 		isGrounded = Physics2D.OverlapCircle(groundCheck.position, checkRadius, whatIsGround);
+		isCrouching = Physics2D.OverlapCircle(ceilingCheck.position, checkRadius, whatIsGround);
 		
 		moveInput = Input.GetAxis("Horizontal");
-		rb.velocity = new Vector2(moveInput * speed, rb.velocity.y);
+		rb.velocity = new Vector2(moveInput * currentSpeed, rb.velocity.y);
 
 		if (facingRight == false && moveInput > 0)
 		{
@@ -45,24 +56,46 @@ public class PlayerController : MonoBehaviour
 
 	void Update()
 	{
-		if (isGrounded == true)
+		if (isGrounded)
 		{
 			extraJumps = extraJumpsValue;
+			if (Input.GetButtonDown("Crouch"))
+			{
+				isCrouching = true;
+				currentSpeed = crouchSpeed;
+			} else if (Input.GetButtonUp("Crouch"))
+			{
+				isCrouching = false;
+				currentSpeed = baseSpeed;
+			}
+			
+//			if (Input.GetButtonDown("Jump"))
+//			{
+//				rb.velocity = Vector2.up * jumpForce;
+//			}
 		}
+//		else if (Input.GetButtonDown("Jump") && extraJumps > 0)
+//		{
+//				rb.velocity = Vector2.up * jumpForce;
+//				extraJumps--;
+//		}
+
 		
 		if (Input.GetButtonDown("Jump") && extraJumps > 0)
 		{
 			rb.velocity = Vector2.up * jumpForce;
 			extraJumps--;
-		} else if (Input.GetButtonDown("Jump") && extraJumps == 0 && isGrounded == true)
+		} else if (Input.GetButtonDown("Jump") && extraJumps == 0 && isGrounded && !isCrouching)
 		{
 			rb.velocity = Vector2.up * jumpForce;
 		}
+		
+
+		
 	}
 
 	void Flip()
 	{
-
 		facingRight = !facingRight;
 		Vector3 Scaler = transform.localScale;
 		Scaler.x *= -1;
