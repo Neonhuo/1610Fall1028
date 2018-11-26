@@ -64,7 +64,8 @@ public class PlayerController : MonoBehaviour
 			{
 				isCrouching = true;
 				currentSpeed = crouchSpeed;
-			} else if (Input.GetButtonUp("Crouch"))
+			}  
+			if (Input.GetButtonUp("Crouch"))
 			{
 				isCrouching = false;
 				currentSpeed = baseSpeed;
@@ -74,11 +75,11 @@ public class PlayerController : MonoBehaviour
 
 
 		
-		if (Input.GetButtonDown("Jump") && extraJumps > 0)
+		if (Input.GetButtonDown("Jump") && extraJumps > 0 && !isCrouching)
 		{
 			rb.velocity = Vector2.up * jumpForce;
 			extraJumps--;
-		} else if (Input.GetButtonDown("Jump") && extraJumps == 0 && isGrounded && !isCrouching)
+		} else if (Input.GetButtonDown("Jump") && extraJumps == 0 && isGrounded)
 		{
 			rb.velocity = Vector2.up * jumpForce;
 		}
