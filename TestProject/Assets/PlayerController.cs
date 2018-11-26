@@ -24,6 +24,7 @@ public class PlayerController : MonoBehaviour
 	public LayerMask whatIsGround;
 	
 	private bool isCrouching = false;
+	private bool isConfined;
 	public Transform ceilingCheck;
 
 	private int extraJumps;
@@ -40,7 +41,7 @@ public class PlayerController : MonoBehaviour
 	{
 
 		isGrounded = Physics2D.OverlapCircle(groundCheck.position, checkRadius, whatIsGround);
-		isCrouching = Physics2D.OverlapCircle(ceilingCheck.position, checkRadius, whatIsGround);
+		isConfined = Physics2D.OverlapCircle(ceilingCheck.position, checkRadius, whatIsGround);
 		
 		moveInput = Input.GetAxis("Horizontal");
 		rb.velocity = new Vector2(moveInput * currentSpeed, rb.velocity.y);
@@ -69,16 +70,8 @@ public class PlayerController : MonoBehaviour
 				currentSpeed = baseSpeed;
 			}
 			
-//			if (Input.GetButtonDown("Jump"))
-//			{
-//				rb.velocity = Vector2.up * jumpForce;
-//			}
 		}
-//		else if (Input.GetButtonDown("Jump") && extraJumps > 0)
-//		{
-//				rb.velocity = Vector2.up * jumpForce;
-//				extraJumps--;
-//		}
+
 
 		
 		if (Input.GetButtonDown("Jump") && extraJumps > 0)
