@@ -49,7 +49,9 @@ public class PlayerController : MonoBehaviour
 		if (facingRight == false && moveInput > 0)
 		{
 			Flip();
-		} else if (facingRight == true && moveInput < 0)
+		}
+		
+		else if (facingRight && moveInput < 0)
 		{
 			Flip();
 		}
@@ -60,6 +62,7 @@ public class PlayerController : MonoBehaviour
 		if (isGrounded)
 		{
 			extraJumps = extraJumpsValue;
+			
 			if (Input.GetButtonDown("Crouch"))
 			{
 				isCrouching = true;
@@ -79,7 +82,9 @@ public class PlayerController : MonoBehaviour
 		{
 			rb.velocity = Vector2.up * jumpForce;
 			extraJumps--;
-		} else if (Input.GetButtonDown("Jump") && extraJumps == 0 && isGrounded)
+		}
+		
+		else if (Input.GetButtonDown("Jump") && extraJumps == 0 && isGrounded)
 		{
 			rb.velocity = Vector2.up * jumpForce;
 		}
