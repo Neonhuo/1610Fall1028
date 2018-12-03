@@ -13,9 +13,12 @@ public class PlayerController : MonoBehaviour
 	private float moveInput;
 
 	private Rigidbody2D rb;
+	public Collider2D StandingCollider;
+
+	private SpriteRenderer render;
+	public Sprite StandingModel;
+	public Sprite CrouchingModel;
 	
-
-
 	private bool facingRight = true;
 
 	private bool isGrounded;
@@ -32,6 +35,7 @@ public class PlayerController : MonoBehaviour
 	
 	void Start ()
 	{
+		render = GetComponent<SpriteRenderer>();
 		extraJumps = extraJumpsValue;
 		currentSpeed = baseSpeed;
 		rb = GetComponent<Rigidbody2D>();
@@ -59,6 +63,7 @@ public class PlayerController : MonoBehaviour
 
 	void Update()
 	{
+		print(isConfined);
 		if (isGrounded)
 		{
 			extraJumps = extraJumpsValue;
@@ -67,13 +72,18 @@ public class PlayerController : MonoBehaviour
 			{
 				isCrouching = true;
 				currentSpeed = crouchSpeed;
+				StandingCollider.enabled = false;
+				render.sprite = CrouchingModel;
+
 			}  
 			if (Input.GetButtonUp("Crouch"))
 			{
-				isCrouching = false;
-				currentSpeed = baseSpeed;
+
+					isCrouching = false;
+					currentSpeed = baseSpeed;
+					StandingCollider.enabled = true;
+					render.sprite = StandingModel;
 			}
-			
 		}
 
 
