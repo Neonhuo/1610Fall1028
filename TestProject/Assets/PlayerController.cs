@@ -63,7 +63,6 @@ public class PlayerController : MonoBehaviour
 
 	void Update()
 	{
-		print(isConfined);
 		if (isGrounded)
 		{
 			extraJumps = extraJumpsValue;
@@ -79,10 +78,13 @@ public class PlayerController : MonoBehaviour
 			if (Input.GetButtonUp("Crouch"))
 			{
 
+				if (!isConfined)
+				{
 					isCrouching = false;
 					currentSpeed = baseSpeed;
 					StandingCollider.enabled = true;
 					render.sprite = StandingModel;
+				}
 			}
 		}
 
